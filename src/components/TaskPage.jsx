@@ -20,17 +20,17 @@ function TasksPage() {
       return true;
     });
 
-  useEffect(() => {
-    const load = async () => {
-      try {
-        const data = await getAllTasks();
-        setTasks(data);
-      } catch (err) {
-        console.error("Failed to load tasks:", err);
-      }
-    };
-    load();
-  }, []);
+ useEffect(() => {
+  const load = async () => {
+    try {
+      const data = await getAllTasks();
+      setTasks(Array.isArray(data) ? data : []); // ✅ only line that changes
+    } catch (err) {
+      console.error("Failed to load tasks:", err);
+    }
+  };
+  load();
+}, []);
 
   const handleAddTask = async (formData) => {
     try {

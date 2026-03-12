@@ -1,5 +1,5 @@
 import axios from 'axios';
-const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
 
 const getAllTasks = async () => {
   const response = await axios.get(`${BASE_URL}/tasks`);

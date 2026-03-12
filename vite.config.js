@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://full-stack-open-server-8cbh.onrender.com', // Express server
+        target: 'http://localhost:3000', // Express server
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },

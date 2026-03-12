@@ -1,20 +1,19 @@
 import axios from 'axios';
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api/tasks';
-
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const getAllTasks = async () => {
-  const response = await axios.get(API_URL);
+  const response = await axios.get(`${BASE_URL}/tasks`);
   return response.data;
 };
 
 const getTaskById = async (id) => {
-  const response = await axios.get(`${API_URL}/${id}`);
+  const response = await axios.get(`${BASE_URL}/tasks/${id}`);
   return response.data;
 };
 
 const createTask = async (formData) => {
   try {
-    const response = await axios.post(API_URL, formData);
+    const response = await axios.post(`${BASE_URL}/tasks`, formData);
     return response.data;
   } catch (err) {
     // Log detailed information to help debug server 500 errors
@@ -33,12 +32,12 @@ const createTask = async (formData) => {
 };
 
 const updateTask = async (id, updatedData) => {
-  const response = await axios.put(`${API_URL}/${id}`, updatedData);
+  const response = await axios.put(`${BASE_URL}/tasks/${id}`, updatedData);
   return response.data;
 };
 
 const deleteTask = async (id) => {
-  await axios.delete(`${API_URL}/${id}`);
+  await axios.delete(`${BASE_URL}/tasks/${id}`);
 };
 
 export  {
